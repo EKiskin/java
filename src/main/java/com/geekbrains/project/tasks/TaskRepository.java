@@ -1,6 +1,7 @@
 package com.geekbrains.project.tasks;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 public class TaskRepository implements Tasks {
     private ArrayList<Task> tasks;
@@ -48,8 +49,10 @@ public class TaskRepository implements Tasks {
 
     @Override
     public void printTasks() {
-        for (Task task: tasks) {
-            System.out.println(task);
-        }
+        tasks.forEach(System.out::println);
+    }
+
+    public Stream<Task> stream(){
+        return tasks.stream();
     }
 }
