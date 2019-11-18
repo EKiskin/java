@@ -1,23 +1,48 @@
 package com.geekbrains.project.tasks;
 
 public class Task {
+    public enum Status {
+        OPENED("открыта", 1),
+        IN_WORK("в работе", 2),
+        CLOSED("закрыта", 3);
+        private String name;
+        private int order;
+        Status(String name, int order){
+            this.name = name;
+            this.order = order;
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getOrder() {
+            return order;
+        }
+    }
     private int id;
     private String name;
     private String owner;
     private String executor;
     private String description;
-    private String status;
+    private Status status;
 
     public Task() {
         id = 0;
     }
 
-    public Task(int id, String name) {
+    public Task(int id, String name, Status status) {
         this.id = id;
         this.name = name;
+        this.status = status;
     }
 
-    public Task(int id, String name, String owner, String executor, String description, String status) {
+    public Task(int id, String name, String owner, String executor, String description, Status status) {
         this.id = id;
         this.name = name;
         this.owner = owner;
@@ -66,16 +91,16 @@ public class Task {
         this.description = description;
     }
 
-    public String getStatus() {
+   public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
     @Override
     public String toString() {
-        return name+": "+description;
+        return "id="+id+" name="+name+" status="+status;
     }
 }

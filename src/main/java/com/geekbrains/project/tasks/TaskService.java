@@ -1,5 +1,7 @@
 package com.geekbrains.project.tasks;
 
+import java.util.stream.Stream;
+
 public class TaskService {
     private Tasks tasks;
 
@@ -26,5 +28,9 @@ public class TaskService {
 
     public void printTasks(){
         tasks.printTasks();
+    }
+
+    public Stream<Task> stream(){
+        return tasks.stream();
     }
 }
